@@ -69,33 +69,56 @@ for (let c = 0; c < numberColumn; c++)
     {
         let newBrick = document.createElement('div');
         newBrick.className = 'brick';
+
+        // Set the position of the brick
         newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
         newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+
+        // Push brick in array
         bricks.push(newBrick);
         gameContainer.appendChild(newBrick);
     }
 }
 
+/**
+ *
+ * @param envent
+ */
 function movePaddle(envent)
 {
-    console.log('ça bouge');
     let containerLeft = gameContainer.offsetLeft;
     let containerRight = containerLeft + containerWidth;
     let paddleLeft = paddle.offsetLeft;
     let paddleRight = paddleLeft + paddleWidth;
-    console.log(containerRight + "\n");
 
     if(event.key === "ArrowLeft" && paddleLeft > containerLeft)
-    {
         paddle.style.left = (paddleLeft - paddleSpeed) + 'px';
-    }
     else if(event.key === "ArrowRight" && paddleRight < (containerRight - 18))
-    {
         paddle.style.left = (paddleLeft + paddleSpeed + 'px');
+}
+// Add event on keydown (keyboard key)
+document.addEventListener('keydown', movePaddle);
+
+function detectCollision() {
+    for (let i = 0; i < bricks.length; i++) {
+        let currentBrick = bricks[i];
+
+        // Checks if the boundaries of the ball and the brick overlap
+        if (ball.offsetTop <= currentBrick.offsetTop + brickHeight &&
+            ball.offsetTop + ballDiameter >= currentBrick.offsetTop &&
+            ball.offsetLeft + ballDiameter >= currentBrick.offsetLeft &&
+            ball.offsetLeft <= currentBrick.offsetLeft + brickWidth) {
+
+            gameContainer.removeChild(currentBrick);
+            bricks.splice(i, 1);
+
+            // Reverse the direction of the ball when it hits a brick
+            ballSpeedY = -ballSpeedY;
+
+            break;
+        }
     }
 }
-
-document.addEventListener('keydown', movePaddle);
 
 function gameLoop() {
     // Ball movement
@@ -107,8 +130,16 @@ function gameLoop() {
         ballSpeedX = -ballSpeedX;
     }
 
-    if (ballTop <= 0) {
+    if (ball.offsetTop <= paddle.offsetTop + paddleHeight &&
+        ball.offsetTop + ballDiameter >= paddle.offsetTop &&
+        ball.offsetLeft + ballDiameter >= paddle.offsetLeft &&
+        ball.offsetLeft <= paddle.offsetLeft + paddleWidth){
+
         // Reverse the vertical direction of the ball when it hits the top
+        ballSpeedY = -ballSpeedY;
+    }
+
+    if (ballTop <= 0) {
         ballSpeedY = -ballSpeedY;
     } else if (ballTop >= containerHeight - ballDiameter) {
         // The ball has touched down, game over
@@ -119,9 +150,8 @@ function gameLoop() {
     ball.style.left = (ballLeft + ballSpeedX) + 'px';
     ball.style.top = (ballTop + ballSpeedY) + 'px';
 
-    /*// Détecter les collisions avec les briques
-    detectCollision();*/
+    detectCollision();
 }
 
-// Lancer le jeu
+// Launch game
 var gameInterval = setInterval(gameLoop, 10);

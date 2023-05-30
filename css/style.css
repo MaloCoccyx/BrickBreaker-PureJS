@@ -9,16 +9,6 @@
 ######################################
 */
 
-/***********/
-/* General */
-/***********/
-/*
-main {
-    display: flex;
-    justify-content: center;
-    top: 50px;
-}
-
 /********/
 /* Game */
 /********/
@@ -42,6 +32,7 @@ main {
 .ball {
     border-radius: 50%;
     background-color: red;
+    top: 400px;
 }
 
 .paddle, .brick{
