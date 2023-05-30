@@ -69,8 +69,8 @@ for (let c = 0; c < numberColumn; c++)
     {
         let newBrick = document.createElement('div');
         newBrick.className = 'brick';
-        newBrick.style.left = (c * (brickWidth + 10)) + 'px';
-        newBrick.style.top = (r * (brickHeight + 10)) + 'px';
+        newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
+        newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
         bricks.push(newBrick);
         gameContainer.appendChild(newBrick);
     }
@@ -83,14 +83,13 @@ function movePaddle(envent)
     let containerRight = containerLeft + containerWidth;
     let paddleLeft = paddle.offsetLeft;
     let paddleRight = paddleLeft + paddleWidth;
-    console.log(paddleRight + "\n");
-    console.log(containerLeft + "\n");
+    console.log(containerRight + "\n");
 
-    if(event.key === 37 && paddleLeft > containerLeft)
+    if(event.key === "ArrowLeft" && paddleLeft > containerLeft)
     {
         paddle.style.left = (paddleLeft - paddleSpeed) + 'px';
     }
-    else if(event.key === "ArrowRight" && paddleRight < containerRight)
+    else if(event.key === "ArrowRight" && paddleRight < (containerRight - 18))
     {
         paddle.style.left = (paddleLeft + paddleSpeed + 'px');
     }
