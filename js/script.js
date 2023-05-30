@@ -10,55 +10,140 @@
 */
 
 /**
- * @type {Element} ball - The Game ball
- * @type {Element} paddle - The Game paddle
  * @type {Element} brick - The brick of the game
  */
-var ball = document.querySelector('.ball');
-var paddle = document.querySelector('.paddle');
-var brick = document.querySelector('.brick');
+const brick = document.querySelector('.brick');
 
 /**
- * @type {HTMLElement} gameContainer - The game container
+ * @type {HTMLDivElement} gameContainer - The game container
+ */
+const gameContainer = document.createElement('div');
+// Create gameContainer Element
+gameContainer.id = 'game-container';
+gameContainer.style.width = '600px';
+gameContainer.style.height = '500px';
+gameContainer.style.border = "1px solid black";
+gameContainer.style.overflow = "hidden";
+gameContainer.style.position = "relative";
+
+document.body.appendChild(gameContainer);
+
+/**
  * @type {offsetWidth} containerWidth - Returns the layout width of gameContainer as an integer
+ */
+const containerWidth = gameContainer.offsetWidth;
+
+/**
  * @type {offsetHeight} containerHeight - Returns the layout height of gameContainer as an integer
  */
-var gameContainer = document.getElementById('game-container');
-var containerWidth = gameContainer.offsetWidth;
-var containerHeight = gameContainer.offsetHeight;
+const containerHeight = gameContainer.offsetHeight;
 
 /**
  * @type {number} numberRow - Number of rows of bricks
- * @type {number} numberColumn - Number of brick columns
- * @type {number} brickWidth - Width of bricks in pixels
- * @type {number} brickHeight - Height of bricks in pixels
- * @type {array} bricks - Array containing the generated bricks
  */
-var numberRow = 7;
-var numberColumn = 10;
-var brickWidth = 50; // in px
-var brickHeight = 20; // in px
-var bricks = []; // array to store bricks
+const numberRow = 7;
+
+/**
+ * @type {number} numberColumn - Number of brick columns
+ */
+const numberColumn = 10;
+
+/**
+ *
+ * @type {number} brickWidth - Width of bricks in pixels
+ */
+const brickWidth = 50; // in px
+
+/**
+ * @type {number} brickHeight - Height of bricks in pixels
+ */
+const brickHeight = 20; // in px
+
+/**
+ * @type {Element[]} bricks - Array containing the generated bricks
+ */
+const bricks = []; // array to store bricks
 
 /**
  * @type {number} paddleWidth - Width of the paddle in px
+ */
+const paddleWidth = 100;
+
+/**
  * @type {number} paddleHeight - Height of the paddle in px
+ */
+const paddleHeight = 20;
+
+/**
  * @type {number} paddleSpeed - Speed of the paddle in px
  */
-var paddleWidth = 100;
-var paddleHeight = 20;
-var paddleSpeed = 5;
+const paddleSpeed = 10;
 
 /**
  * @type {number} ballRadius - Radius of the ball in px
+ */
+const ballRadius = 10;
+
+/**
  * @type {number} ballDiameter - Diameter of the ball in px
+ */
+const ballDiameter = ballRadius * 2;
+
+/**
  * @type {number} ballSpeedX - X-axis ball speed in px
+ */
+let ballSpeedX = 3;
+
+/**
  * @type {number} ballSpeedY - Y-axis ball speed in px
  */
-var ballRadius = 10;
-var ballDiameter = ballRadius * 2;
-var ballSpeedX = 2;
-var ballSpeedY = 2;
+let ballSpeedY = 3;
+
+/**
+ * @type {setInterval} gameInterval - Launch game
+ */
+const gameInterval = setInterval(gameLoop, 10);
+
+/**
+ * @type {HTMLDivElement} divBall - Create div.ball
+ */
+const divBall = document.createElement('div');
+
+divBall.className = "ball";
+divBall.style.width = 20 + "px";
+divBall.style.height = 20 + "px";
+divBall.style.background = "red";
+divBall.style.left = 5 + "px";
+divBall.style.top = 400 + "px";
+divBall.style.position = "absolute";
+divBall.style.borderRadius = 50 + "%";
+
+gameContainer.appendChild(divBall);
+
+/**
+ * @type {HTMLDivElement} divPaddle - Create div.paddle
+ */
+const divPaddle = document.createElement('div');
+
+divPaddle.className = "paddle";
+divPaddle.style.width = paddleWidth + "px";
+divPaddle.style.height = paddleHeight + "px";
+divPaddle.style.background = "blue";
+divPaddle.style.left = 5 + "px";
+divPaddle.style.top = 475 + "px";
+divPaddle.style.position = "absolute";
+
+gameContainer.appendChild(divPaddle);
+
+/**
+ * @type {Element} ball - The Game ball
+ */
+const ball = document.querySelector('.ball');
+
+/**
+ * @type {Element} paddle - The Game paddle
+ */
+const paddle = document.querySelector('.paddle');
 
 // Initialize bricks
 // Set columns
@@ -73,6 +158,10 @@ for (let c = 0; c < numberColumn; c++)
         // Set the position of the brick
         newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
         newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+        newBrick.style.background = "green";
+        newBrick.style.width = brickWidth + "px";
+        newBrick.style.height = brickHeight + "px";
+        newBrick.style.position = "absolute";
 
         // Push brick in array
         bricks.push(newBrick);
@@ -81,10 +170,11 @@ for (let c = 0; c < numberColumn; c++)
 }
 
 /**
+ * Function to
  *
- * @param envent
+ * @param event movePaddle
  */
-function movePaddle(envent)
+function movePaddle(event)
 {
     let containerLeft = gameContainer.offsetLeft;
     let containerRight = containerLeft + containerWidth;
@@ -130,10 +220,11 @@ function gameLoop() {
         ballSpeedX = -ballSpeedX;
     }
 
+    // Checks if the boundaries of the ball and the paddle overlap
     if (ball.offsetTop <= paddle.offsetTop + paddleHeight &&
         ball.offsetTop + ballDiameter >= paddle.offsetTop &&
         ball.offsetLeft + ballDiameter >= paddle.offsetLeft &&
-        ball.offsetLeft <= paddle.offsetLeft + paddleWidth){
+        ball.offsetLeft <= paddle.offsetLeft + paddleWidth) {
 
         // Reverse the vertical direction of the ball when it hits the top
         ballSpeedY = -ballSpeedY;
@@ -152,6 +243,3 @@ function gameLoop() {
 
     detectCollision();
 }
-
-// Launch game
-var gameInterval = setInterval(gameLoop, 10);
