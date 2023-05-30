@@ -1,6 +1,31 @@
+/*
+######################################
+##                                  ##
+## Author: Guillaume Lequart        ##
+## GitHub: @MaloCoccyx              ##
+## Project: BrickBreaker-PureJS     ##
+## Created: 02/12/2022              ##
+##                                  ##
+######################################
+*/
+
+/***********/
+/* General */
+/***********/
+/*
+main {
+    display: flex;
+    justify-content: center;
+    top: 50px;
+}
+
+/********/
+/* Game */
+/********/
+
 #game-container {
-    width: 500px;
-    height: 400px;
+    width: 600px;
+    height: 500px;
     position: relative;
     border: 1px solid black;
     overflow: hidden;
@@ -20,7 +45,6 @@
 .paddle {
     background-color: blue;
     width: 100px;
-    height: 20px;
 }
 
 .brick {
