@@ -10,9 +10,42 @@
 */
 
 /**
- * @type {Element} brick - The brick of the game
+ * @type {HTMLHeadingElement} divTitle - The score
  */
-const brick = document.querySelector('.brick');
+const divTitle = document.createElement('h1');
+
+divTitle.style.height = 40 + "px";
+divTitle.style.left = 5 + "px";
+divTitle.style.marginBottom = 5 + "px";
+divTitle.innerText = "Brick Breaker in Pure JavaScript";
+
+document.body.appendChild(divTitle);
+
+/**
+ * @type {HTMLHeadingElement} divTitle - The score
+ */
+const divSubTitle = document.createElement('h2');
+
+divSubTitle.style.height = 40 + "px";
+divSubTitle.style.left = 5 + "px";
+divSubTitle.style.marginBottom = 5 + "px";
+divSubTitle.innerHTML = "Author - <strong>Lequart Guillaume</strong> | <a href=\"https://github.com/MaloCoccyx/\">@MaloCoccyx</a> |";
+
+document.body.appendChild(divSubTitle);
+
+/**
+ * @type {HTMLDivElement} divTitle - The score
+ */
+const divScore = document.createElement('h2');
+
+divScore.id = "score";
+divScore.style.height = 40 + "px";
+divScore.style.left = 5 + "px";
+divScore.style.marginBottom = 5 + "px";
+divScore.innerHTML = "Author - <strong>Lequart Guillaume</strong> | <a href=\"https://github.com/MaloCoccyx/\">@MaloCoccyx</a> |";
+
+document.body.appendChild(divScore);
+
 
 /**
  * @type {HTMLDivElement} gameContainer - The game container
@@ -105,7 +138,7 @@ let ballSpeedY = 3;
 const gameInterval = setInterval(gameLoop, 10);
 
 /**
- * @type {HTMLDivElement} divBall - Create div.ball
+ * @type {HTMLDivElement} divBall - The ball
  */
 const divBall = document.createElement('div');
 
@@ -121,7 +154,7 @@ divBall.style.borderRadius = 50 + "%";
 gameContainer.appendChild(divBall);
 
 /**
- * @type {HTMLDivElement} divPaddle - Create div.paddle
+ * @type {HTMLDivElement} divPaddle - The paddle
  */
 const divPaddle = document.createElement('div');
 
@@ -144,6 +177,11 @@ const ball = document.querySelector('.ball');
  * @type {Element} paddle - The Game paddle
  */
 const paddle = document.querySelector('.paddle');
+
+/**
+ * @type {Element} brick - The brick of the game
+ */
+const brick = document.querySelector('.brick');
 
 // Initialize bricks
 // Set columns
@@ -170,7 +208,7 @@ for (let c = 0; c < numberColumn; c++)
 }
 
 /**
- * Function to
+ * Function to move the paddle with left & right arrow (keyboard)
  *
  * @param event movePaddle
  */
@@ -189,6 +227,10 @@ function movePaddle(event)
 // Add event on keydown (keyboard key)
 document.addEventListener('keydown', movePaddle);
 
+/**
+ * Checks if the ball collides with the bricks/paddle.
+ * Remove a brick if the ball hits it.
+ */
 function detectCollision() {
     for (let i = 0; i < bricks.length; i++) {
         let currentBrick = bricks[i];
@@ -207,9 +249,24 @@ function detectCollision() {
 
             break;
         }
+
+        // Checks if the boundaries of the ball and the paddle overlap
+        if (ball.offsetTop <= paddle.offsetTop + paddleHeight &&
+            ball.offsetTop + ballDiameter >= paddle.offsetTop &&
+            ball.offsetLeft + ballDiameter >= paddle.offsetLeft &&
+            ball.offsetLeft <= paddle.offsetLeft + paddleWidth) {
+
+            // Reverse the vertical direction of the ball when it hits the top
+            ballSpeedY = -ballSpeedY;
+
+            break;
+        }
     }
 }
 
+/**
+ * Called at regular intervals, allowing continuous ball movement and collision detection.
+ */
 function gameLoop() {
     // Ball movement
     let ballLeft = ball.offsetLeft;
@@ -218,16 +275,6 @@ function gameLoop() {
     if (ballLeft <= 0 || ballLeft >= containerWidth - ballDiameter) {
         // Reverse the horizontal direction of the ball when it hits the edges
         ballSpeedX = -ballSpeedX;
-    }
-
-    // Checks if the boundaries of the ball and the paddle overlap
-    if (ball.offsetTop <= paddle.offsetTop + paddleHeight &&
-        ball.offsetTop + ballDiameter >= paddle.offsetTop &&
-        ball.offsetLeft + ballDiameter >= paddle.offsetLeft &&
-        ball.offsetLeft <= paddle.offsetLeft + paddleWidth) {
-
-        // Reverse the vertical direction of the ball when it hits the top
-        ballSpeedY = -ballSpeedY;
     }
 
     if (ballTop <= 0) {
