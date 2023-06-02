@@ -82,7 +82,7 @@ divBall.className = "ball";
 divBall.style.width = 20 + "px";
 divBall.style.height = 20 + "px";
 divBall.style.background = "red";
-divBall.style.left = "50%";
+divBall.style.left = "45%";
 divBall.style.top = "50%";
 divBall.style.position = "absolute";
 divBall.style.borderRadius = 50 + "%";
@@ -108,8 +108,41 @@ divPaddle.className = "paddle";
 divPaddle.style.width = paddleWidth + "px";
 divPaddle.style.height = paddleHeight + "px";
 divPaddle.style.background = "blue";
-divPaddle.style.left = "50%";
+divPaddle.style.left = "40%";
 divPaddle.style.top = 475 + "px";
 divPaddle.style.position = "absolute";
 
 gameContainer.appendChild(divPaddle);
+
+
+/**
+ * @type {HTMLDivElement} divStart - Div created when user winning the game
+ */
+const divStart = document.createElement('div');
+
+divStart.id = "start";
+divStart.style.width = 400 + "px";
+divStart.style.height = 150 + "px";
+divStart.style.background = "#76a69e";
+divStart.style.color = "white";
+divStart.style.textAlign = "center";
+divStart.style.paddingTop = "20px";
+divStart.style.zIndex = "9999";
+divStart.style.border = "1px solid white";
+divStart.innerHTML = "<h1>What scheme do you want to play?</h1>" +
+    "<h2>Choose it by clicking on the corresponding scheme</h2>";
+
+/**
+ * @type {HTMLAnchorElement} classicButton - Choose classic scheme
+ */
+let classicButton = document.createElement('a');
+
+classicButton.id = "start";
+classicButton.href = "?start=1&type=classic";
+classicButton.innerHTML = "<img src=\"\" alt=\"Classic\" />";
+classicButton.style.border = "1px solid green";
+classicButton.style.color = "#08CC0A";
+classicButton.style.background = "white";
+classicButton.style.padding = "5px";
+
+divStart.appendChild(classicButton);

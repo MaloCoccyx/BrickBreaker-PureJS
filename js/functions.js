@@ -10,64 +10,79 @@
 ######################################
 */
 
+
+/**
+ * Create a div overlay for winning or loose game
+ * @returns {HTMLDivElement}
+ */
+function createOverlayDiv()
+{
+    const divOverlay = document.createElement('div');
+
+    divOverlay.style.width = 400 + "px";
+    divOverlay.style.height = 150 + "px";
+    divOverlay.style.color = "white";
+    divOverlay.style.textAlign = "center";
+    divOverlay.style.paddingTop = "20px";
+    divOverlay.style.zIndex = "9999";
+    divOverlay.style.border = "1px solid white";
+    return divOverlay;
+}
+
+/**
+ * Create a link to reload page
+ * @returns {HTMLAnchorElement}
+ */
+function createOverlayButton()
+{
+    let overlayButton = document.createElement('a');
+
+    overlayButton.style.border = "1px solid green";
+    overlayButton.style.background = "white";
+    overlayButton.style.padding = "5px";
+    overlayButton.href = "#restart";
+    overlayButton.textContent = "Restart";
+
+    return overlayButton;
+}
+
 /**
  * Show winning screen
  */
 function winning()
 {
-    clearInterval(gameInterval);
 
-    /**
-     * @type {HTMLDivElement} divWinning - Div created when user winning the game
-     */
-    const divWinning = document.createElement('div');
-
-    divWinning.id = "winning";
-    divWinning.style.width = 400 + "px";
-    divWinning.style.height = 150 + "px";
+    const divWinning = createOverlayDiv();
     divWinning.style.background = "#08CC0A";
-    divWinning.style.color = "white";
-    divWinning.style.textAlign = "center";
-    divWinning.style.paddingTop = "20px";
-    divWinning.style.zIndex = "9999";
-    divWinning.style.border = "1px solid white";
     divWinning.innerHTML = "<h1>Congratulations you won!</h1>";
 
-    /**
-     * @type {HTMLAnchorElement} winningButton - Reload game when clicked
-     */
-    let winningButton = document.createElement('a');
+    // Button
+    const aWinning = createOverlayButton();
+    aWinning.style.color = "#08CC0A";
 
-    winningButton.id = "restart";
-    winningButton.href = "#restart";
-    winningButton.textContent = "Restart";
-    winningButton.style.border = "1px solid green";
-    winningButton.style.color = "#08CC0A";
-    winningButton.style.background = "white";
-    winningButton.style.padding = "5px";
-
-    divWinning.appendChild(winningButton);
+    divWinning.appendChild(aWinning);
 
     // Hover
-    winningButton.onmouseover = function ()
+    aWinning.onmouseover = function ()
     {
-        winningButton.style.border = "1px solid white";
-        winningButton.style.color = "white";
-        winningButton.style.background = "#08CC0A";
-        winningButton.style.padding = "5px";
+        aWinning.style.border = "1px solid white";
+        aWinning.style.color = "white";
+        aWinning.style.padding = "5px";
+        aWinning.style.background = "#08CC0A";
     };
 
-    winningButton.onmouseout = function ()
+    aWinning.onmouseout = function ()
     {
-        winningButton.style.border = "1px solid green";
-        winningButton.style.color = "#08CC0A";
-        winningButton.style.background = "white";
-        winningButton.style.padding = "5px";
+        aWinning.style.border = "1px solid green";
+        aWinning.style.background = "white";
+        aWinning.style.padding = "5px";
+        aWinning.style.color = "#08CC0A";
     };
+
     // Reload page
-    winningButton.onclick = function () { location.reload();};
+    aWinning.onclick = function () { location.reload();};
 
-    showBackground().appendChild(divWinning);
+    showOverlay().appendChild(divWinning);
 }
 
 /**
@@ -75,66 +90,43 @@ function winning()
  */
 function gameOver()
 {
-    clearInterval(gameInterval);
-
-    /**
-     * @type {HTMLDivElement} divGameOver - Div created when user loose the game
-     */
-    const divGameOver = document.createElement('div');
-
-    divGameOver.id = "winning";
-    divGameOver.style.width = 400 + "px";
-    divGameOver.style.height = 150 + "px";
+    const divGameOver = createOverlayDiv();
     divGameOver.style.background = "#cc0808";
-    divGameOver.style.color = "white";
-    divGameOver.style.textAlign = "center";
-    divGameOver.style.paddingTop = "20px";
-    divGameOver.style.zIndex = "9999";
-    divGameOver.style.border = "1px solid white";
     divGameOver.innerHTML = "<h1>Game over!</h1>";
 
-    /**
-     * @type {HTMLAnchorElement} loosingButton - Reload game when clicked
-     */
-    let loosingButton = document.createElement('a');
+    // Button
+    const aGameOver = createOverlayButton();
+    aGameOver.style.color = "#cc0808";
 
-    loosingButton.id = "restart";
-    loosingButton.href = "#restart";
-    loosingButton.textContent = "Restart";
-    loosingButton.style.border = "1px solid green";
-    loosingButton.style.color = "#cc0808";
-    loosingButton.style.background = "white";
-    loosingButton.style.padding = "5px";
-
-    divGameOver.appendChild(loosingButton);
+    divGameOver.appendChild(aGameOver);
 
     // Hover
-    loosingButton.onmouseover = function ()
+    aGameOver.onmouseover = function ()
     {
-        loosingButton.style.border = "1px solid white";
-        loosingButton.style.color = "white";
-        loosingButton.style.background = "#cc0808";
-        loosingButton.style.padding = "5px";
+        aGameOver.style.border = "1px solid white";
+        aGameOver.style.color = "white";
+        aGameOver.style.padding = "5px";
+        aGameOver.style.background = "#cc0808";
     };
 
-    loosingButton.onmouseout = function ()
+    aGameOver.onmouseout = function ()
     {
-        loosingButton.style.border = "1px solid green";
-        loosingButton.style.color = "#cc0808";
-        loosingButton.style.background = "white";
-        loosingButton.style.padding = "5px";
+        aGameOver.style.border = "1px solid red";
+        aGameOver.style.background = "white";
+        aGameOver.style.padding = "5px";
+        aGameOver.style.background = "white";
     };
     // Reload page
-    loosingButton.onclick = function () { location.reload();};
+    aGameOver.onclick = function () { location.reload();};
 
-    showBackground().appendChild(divGameOver);
+    showOverlay().appendChild(divGameOver);
 }
 
 /**
  * Show background for winning or game over screen
  * @returns {HTMLDivElement}
  */
-function showBackground()
+function showOverlay()
 {
     /**
      * @type {HTMLDivElement} divBackground - Background when winning or loose game
@@ -155,4 +147,40 @@ function showBackground()
 
     document.body.appendChild(divBackground);
     return divBackground;
+}
+
+/**
+ * Delete the overlay
+ */
+function deleteOverlay()
+{
+    const divBackground = document.querySelector('#background');
+    document.body.removeChild(divBackground);
+}
+
+/**
+ * Choose scheme
+ */
+function chooseScheme()
+{
+    showOverlay().appendChild(divStart);
+
+    // Choose classic scheme
+    classicButton.onclick = function () {
+        generateGame("classic");
+        deleteOverlay();
+    };
+}
+
+/**
+ * Checks if the parameters are already passed
+ */
+function checkStart()
+{
+    if(start === "1" && (type !== "" || type !== null))
+    {
+        generateGame(type);
+    }
+    else
+        chooseScheme();
 }

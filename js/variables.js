@@ -23,22 +23,22 @@ const containerHeight = gameContainer.offsetHeight;
 /**
  * @type {number} numberRow - Number of rows of bricks
  */
-const numberRow = 1;
+let numberRow = 1;
 
 /**
  * @type {number} numberColumn - Number of brick columns
  */
-const numberColumn = 1;
+let numberColumn = 1;
 
 /**
  * @type {number} brickWidth - Width of bricks in pixels
  */
-const brickWidth = 50; // in px
+let brickWidth = 50; // in px
 
 /**
  * @type {number} brickHeight - Height of bricks in pixels
  */
-const brickHeight = 20; // in px
+let brickHeight = 20; // in px
 
 /**
  * @type {Element[]} bricks - Array containing the generated bricks
@@ -81,13 +81,18 @@ let tries = 1;
 const brick = document.querySelector('.brick');
 
 /**
- * @type {number} scoreMax - Maximum score
- */
-const scoreMax = (bricks.length * 100);
-// Show maximum score
-divScore.innerHTML = "Score : <strong>0 / " + scoreMax + "</strong>";
-
-/**
  * @type {number} scoreCurrent - Current Score, updated when ball collide with a brick
  */
 let scoreCurrent = 0;
+
+const  urlParams = new URLSearchParams(window.location.search);
+
+/**
+ * @type {string} start - Start game if === 1
+ */
+let start = urlParams.get('start');
+
+/**
+ * @type {string} scoreCurrent - Current Score, updated when ball collide with a brick
+ */
+let type = urlParams.get('type');
