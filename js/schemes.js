@@ -87,7 +87,7 @@ function letter_m()
  */
 function countBricks(numbers)
 {
-    const scoreMax = (numbers * 100);
+    scoreMax = (numbers * 100);
     // Show maximum score
     divScore.innerHTML = "Score : <strong>0 / " + scoreMax + "</strong>";
 }

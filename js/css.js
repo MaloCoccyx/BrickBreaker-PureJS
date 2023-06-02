@@ -35,6 +35,31 @@ divSubTitle.innerHTML = "Author : <strong>Lequart Guillaume</strong> | <a href=\
 document.body.appendChild(divSubTitle);
 
 /**
+ * @type {HTMLDivElement} divHowToPlay - How to play?
+ */
+const divHowToPlay = document.createElement('div');
+
+divHowToPlay.id = "howToPlay";
+divHowToPlay.style.width = 600 + "px";
+divHowToPlay.style.height = 250 + "px";
+divHowToPlay.style.color = "white";
+divHowToPlay.style.textAlign = "center";
+divHowToPlay.style.paddingTop = "10px";
+divHowToPlay.style.paddingBottom = "10px";
+divHowToPlay.style.border = "1px solid white";
+divHowToPlay.style.display = "inline-block";
+divHowToPlay.style.background = "#76a69e";
+divHowToPlay.style.position = "absolute";
+divHowToPlay.style.left = 40 + "%";
+divHowToPlay.style.top = 40 + "%";
+divHowToPlay.innerHTML = "<h1>How to play?</h1>" +
+    "<h2>You have to move the paddle, to bounce the ball on it and break all the bricks.</h2>" +
+    "<h3>Move the paddle left or right with ← & → .</h3>" +
+    "<h4>You have three tries.</h4>";
+
+document.body.appendChild(divHowToPlay);
+
+/**
  * @type {HTMLDivElement} divScore - The score
  */
 const divScore = document.createElement('h3');
@@ -114,15 +139,14 @@ divPaddle.style.position = "absolute";
 
 gameContainer.appendChild(divPaddle);
 
-
 /**
  * @type {HTMLDivElement} divStart - Div created when user winning the game
  */
 const divStart = document.createElement('div');
 
 divStart.id = "start";
-divStart.style.width = 400 + "px";
-divStart.style.height = 150 + "px";
+divStart.style.width = 600 + "px";
+divStart.style.height = 250 + "px";
 divStart.style.background = "#76a69e";
 divStart.style.color = "white";
 divStart.style.textAlign = "center";

@@ -10,7 +10,6 @@
 ######################################
 */
 
-
 /**
  * Create a div overlay for winning or loose game
  * @returns {HTMLDivElement}

@@ -76,6 +76,11 @@ let ballSpeedY = 3;
 let tries = 1;
 
 /**
+ * @type {number} scoreMax - Score max
+ */
+let scoreMax = 0;
+
+/**
  * @type {Element} brick - The brick of the game
  */
 const brick = document.querySelector('.brick');

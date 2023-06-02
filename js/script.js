@@ -34,6 +34,7 @@ function generateGame(type)
 
 if(start === "1")
 {
+
     const gameInterval = setInterval(gameLoop, 10);
 
     /**
@@ -140,9 +141,7 @@ if(start === "1")
      */
     function retries()
     {
-        console.log(tries);
         tries++;
-        console.log(tries);
         divBall.style.left = "50%";
         divBall.style.top = "50%";
         ballSpeedX = 3;
