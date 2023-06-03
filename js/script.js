@@ -19,17 +19,13 @@
 function generateGame(type)
 {
     if(type === "letter_m")
-    {
         letter_m();
-    }
-    else if (type === "letter-t")
-    {
-
-    }
+    else if (type === "letter_t")
+        letter_t();
+    else if (type === "random")
+        random();
     else
-    {
         classic();
-    }
 }
 
 if(start === "1")

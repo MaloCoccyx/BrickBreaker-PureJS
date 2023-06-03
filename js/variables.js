@@ -101,3 +101,13 @@ let start = urlParams.get('start');
  * @type {string} scoreCurrent - Current Score, updated when ball collide with a brick
  */
 let type = urlParams.get('type');
+
+/**
+ * @type {number} paddleWidth - Width of the paddle in px
+ */
+const paddleWidth = divPaddle.offsetWidth;
+
+/**
+ * @type {number} paddleHeight - Height of the paddle in px
+ */
+const paddleHeight = divPaddle.offsetHeight;

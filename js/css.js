@@ -115,23 +115,13 @@ divBall.style.borderRadius = 50 + "%";
 gameContainer.appendChild(divBall);
 
 /**
- * @type {number} paddleWidth - Width of the paddle in px
- */
-const paddleWidth = 100;
-
-/**
- * @type {number} paddleHeight - Height of the paddle in px
- */
-const paddleHeight = 20;
-
-/**
  * @type {HTMLDivElement} divPaddle - The paddle
  */
 const divPaddle = document.createElement('div');
 
 divPaddle.className = "paddle";
-divPaddle.style.width = paddleWidth + "px";
-divPaddle.style.height = paddleHeight + "px";
+divPaddle.style.width = "100px";
+divPaddle.style.height = "20px";
 divPaddle.style.background = "blue";
 divPaddle.style.left = "40%";
 divPaddle.style.top = 475 + "px";
@@ -145,7 +135,7 @@ gameContainer.appendChild(divPaddle);
 const divStart = document.createElement('div');
 
 divStart.id = "start";
-divStart.style.width = 600 + "px";
+divStart.style.width = 1000 + "px";
 divStart.style.height = 250 + "px";
 divStart.style.background = "#76a69e";
 divStart.style.color = "white";
@@ -161,12 +151,34 @@ divStart.innerHTML = "<h1>What scheme do you want to play?</h1>" +
  */
 let classicButton = document.createElement('a');
 
-classicButton.id = "start";
+classicButton.id = "classic";
 classicButton.href = "?start=1&type=classic";
-classicButton.innerHTML = "<img src=\"\" alt=\"Classic\" />";
-classicButton.style.border = "1px solid green";
-classicButton.style.color = "#08CC0A";
-classicButton.style.background = "white";
-classicButton.style.padding = "5px";
+classicButton.innerHTML = "<img src=\"img/classic-schema.png\" alt=\"Classic Schema\" width='200px' height='100px'/>";
+classicButton.style.marginRight = "10px";
 
 divStart.appendChild(classicButton);
+
+/**
+ * @type {HTMLAnchorElement} letterTButton - Choose T-schema
+ */
+let letterTButton = document.createElement('a');
+
+letterTButton.id = "t-schema";
+letterTButton.href = "?start=1&type=letter_t";
+letterTButton.innerHTML = "<img src=\"img/t-schema.png\" alt=\"T-schema\"  width='200px' height='100px' />";
+letterTButton.style.marginRight = "10px";
+
+divStart.appendChild(letterTButton);
+
+/**
+ * @type {HTMLAnchorElement} randomButton - Choose T-schema
+ */
+let randomButton = document.createElement('a');
+
+randomButton.id = "random";
+randomButton.href = "?start=1&type=random";
+randomButton.innerHTML = "<img src=\"img/random.png\" alt=\"random\"  width='200px' height='100px' />";
+randomButton.style.marginRight = "10px";
+
+divStart.appendChild(randomButton);
+

@@ -24,25 +24,60 @@ function createOverlayDiv()
     divOverlay.style.textAlign = "center";
     divOverlay.style.paddingTop = "20px";
     divOverlay.style.zIndex = "9999";
+    divOverlay.style.position = "absolute";
+    divOverlay.style.position = "absolute";
     divOverlay.style.border = "1px solid white";
     return divOverlay;
 }
 
 /**
- * Create a link to reload page
+ * Create restart link
  * @returns {HTMLAnchorElement}
  */
 function createOverlayButton()
 {
     let overlayButton = document.createElement('a');
 
-    overlayButton.style.border = "1px solid green";
+    overlayButton.style.border = "1px solid white";
     overlayButton.style.background = "white";
     overlayButton.style.padding = "5px";
     overlayButton.href = "#restart";
     overlayButton.textContent = "Restart";
 
     return overlayButton;
+}
+
+/**
+ * Create home link
+ * @returns {HTMLAnchorElement}
+ */
+function createOverlayHome()
+{
+    // Button
+    const overlayHome = createOverlayButton();
+    overlayHome.style.color = "#004aff";
+    overlayHome.href = "index.html";
+    overlayHome.textContent = "Back to home";
+    overlayHome.style.marginLeft = "10px";
+
+    // Hover
+    overlayHome.onmouseover = function ()
+    {
+        overlayHome.style.border = "1px solid white";
+        overlayHome.style.color = "white";
+        overlayHome.style.padding = "5px";
+        overlayHome.style.background = "#004aff";
+    };
+
+    overlayHome.onmouseout = function ()
+    {
+        overlayHome.style.border = "1px solid #004aff";
+        overlayHome.style.color = "#004aff";
+        overlayHome.style.padding = "5px";
+        overlayHome.style.background = "white";
+    };
+
+    return overlayHome;
 }
 
 /**
@@ -81,6 +116,10 @@ function winning()
     // Reload page
     aWinning.onclick = function () { location.reload();};
 
+    const home = createOverlayHome();
+
+    divWinning.appendChild(home);
+
     showOverlay().appendChild(divWinning);
 }
 
@@ -111,12 +150,17 @@ function gameOver()
     aGameOver.onmouseout = function ()
     {
         aGameOver.style.border = "1px solid red";
-        aGameOver.style.background = "white";
+        aGameOver.style.color = "#cc0808";
         aGameOver.style.padding = "5px";
         aGameOver.style.background = "white";
     };
     // Reload page
     aGameOver.onclick = function () { location.reload();};
+
+    // Button
+    const home = createOverlayHome();
+
+    divGameOver.appendChild(home);
 
     showOverlay().appendChild(divGameOver);
 }
@@ -182,4 +226,30 @@ function checkStart()
     }
     else
         chooseScheme();
+}
+
+/**
+ * Count bricks and multiply by 100 to get max score
+ * @param numbers
+ */
+function countBricks(numbers)
+{
+    scoreMax = (numbers * 100);
+    // Show maximum score
+    divScore.innerHTML = "Score : <strong>0 / " + scoreMax + "</strong>";
+}
+
+/**
+ * Generate random color for bricks
+ * @returns {string}
+ */
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
 }
