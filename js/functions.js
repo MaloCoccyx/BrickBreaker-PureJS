@@ -250,11 +250,7 @@ function countBricks(numbers)
  * @returns {string}
  */
 function getRandomColor() {
-
-    const letters = '0123456789ABCDEF';
-    let color = colors[Math.floor(Math.random() * 8)];
-
-    return color;
+    return colors[Math.floor(Math.random() * 8)];
 }
 
 /**
