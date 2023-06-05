@@ -17,10 +17,10 @@ function countdown() {
         if (count > 0) {
             audioHTMLCountDown.play();
             countDown.textContent = count;
-            document.body.appendChild(countDown);
+            gameContainer.appendChild(countDown);
             count--;
         } else {
-            document.body.removeChild(countDown);
+            gameContainer.removeChild(countDown);
             clearInterval(timer);
             return true;
         }
@@ -39,10 +39,14 @@ function createOverlayDiv()
     divOverlay.style.height = 150 + "px";
     divOverlay.style.color = "white";
     divOverlay.style.textAlign = "center";
-    divOverlay.style.paddingTop = "20px";
+    divOverlay.style.padding = "20px";
+    divOverlay.style.marginLeft = "auto";
+    divOverlay.style.marginRight = "auto";
+    divOverlay.style.marginTop = "20%";
     divOverlay.style.zIndex = "9999";
-    divOverlay.style.position = "absolute";
     divOverlay.style.border = "1px solid white";
+
+    document.documentElement.style.overflow = "hidden";
     return divOverlay;
 }
 
@@ -194,15 +198,11 @@ function showOverlay()
 
     divBackground.id = "background";
     divBackground.style.minWidth = "100%";
-    divBackground.style.height = "100%";
+    divBackground.style.minHeight = "100%";
     divBackground.style.background = "rgba(0,0,0,0.6)";
-    divBackground.style.display = "flex";
-    divBackground.style.justifyContent = "center";
-    divBackground.style.position = "absolute";
     divBackground.style.zIndex = "9998";
+    divBackground.style.position = "absolute";
     divBackground.style.top = 0 + "px";
-    divBackground.style.left = 0 + "px";
-    divBackground.style.paddingTop = "20%";
 
     document.body.appendChild(divBackground);
     return divBackground;
