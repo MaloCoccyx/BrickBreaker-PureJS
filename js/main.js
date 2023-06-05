@@ -30,6 +30,8 @@ function generateGame(type)
         space_invader();
     else if (type === "square")
         square();
+    else if (type === "square_2")
+        square_2();
     else
         classic();
 }
@@ -50,6 +52,11 @@ if(start === "1")
             const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
             const newPositionLeft = currentPosition - paddleWidth;
             const newPositionRight = currentPosition + paddleWidth;
+
+            // Mouse control
+            let MousePosX = 0;
+
+
 
             if((event.key === "ArrowLeft" || event.key === "q" ||  event.key === "a") && newPositionLeft >= (-paddleWidth / 4))
                 divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';

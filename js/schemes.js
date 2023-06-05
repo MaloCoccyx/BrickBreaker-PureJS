@@ -34,6 +34,9 @@ function divBricks()
 function classic()
 {
     randomColorPaddleBall();
+
+    const colorsBrick = ["#008dff", "#3bce13", "#7849cc", "#ff6600",
+        "#fff219", "#ff0400", "#008dff", "#3bce13"];
     for (let c = 0; c < numberColumn; c++)
     {
         // Set rows
@@ -44,9 +47,8 @@ function classic()
             // Set the position of the brick
             newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
-            newBrick.style.background = getRandomColor();
             newBrick.style.display = "block";
-
+            newBrick.style.background = colorsBrick[r];
 
             // Push brick in array
             bricks.push(newBrick);
@@ -69,15 +71,30 @@ function letter_m()
 
             newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+            newBrick.style.display = "block";
 
-            if (c === 0 || c === 1 || c === 8 ||c === 9 ||
-                (r === 0 && (c === 2 ||c === 7)) ||
-                (r === 1 && (c === 2 || c === 3 || c === 6 || c === 7)) ||
-                (r === 2 && (c === 3 || c === 4 || c === 5 || c === 6)) ||
-                ((r === 3 || r === 4) && (c === 4 || c === 5))
-            ) {
-                newBrick.style.display = "block";
-                newBrick.style.background = getRandomColor();
+            if (c === 0 ||c === 9){
+                newBrick.style.background = colorsBricks[0];
+                bricks.push(newBrick);
+            }else if( c === 1 || c === 8){
+
+                newBrick.style.background = colorsBricks[5];
+                bricks.push(newBrick);
+            }else if(r === 0 && (c === 2 ||c === 7)){
+
+                newBrick.style.background = colorsBricks[2];
+                bricks.push(newBrick);
+            }else if(r === 1 && (c === 2 || c === 3 || c === 6 || c === 7)){
+
+                newBrick.style.background = colorsBricks[2];
+                bricks.push(newBrick);
+            }else if(r === 2 && (c === 3 || c === 4 || c === 5 || c === 6)){
+
+                newBrick.style.background = colorsBricks[3];
+                bricks.push(newBrick);
+            }else if((r === 3 || r === 4) && (c === 4 || c === 5)) {
+
+                newBrick.style.background = colorsBricks[6];
                 bricks.push(newBrick);
             }
             gameContainer.appendChild(newBrick);
@@ -102,8 +119,27 @@ function letter_t()
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
             newBrick.style.display = "block";
 
-            if (r === 0 || r === 1 || r === 2 || c ===  midColumn || c === (midColumn - 1) || c === (midColumn - 2) || c === (midColumn + 1)) {
-                newBrick.style.background = getRandomColor();
+            if (r === 0){
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+            }else if(r === 1) {
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+            }else if( r === 2){
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+
+            }else if(c === midColumn){
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+            }else if(c === (midColumn - 1)){
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+            }else if(c === (midColumn - 2)){
+                newBrick.style.background = colors[r];
+                bricks.push(newBrick);
+            }else if(c === (midColumn + 1)){
+                newBrick.style.background = colors[r];
                 bricks.push(newBrick);
             }
             gameContainer.appendChild(newBrick);
@@ -240,10 +276,52 @@ function square()
             newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
 
-            if (r === 0 || r === 1 || c === 0 || c === 1 || c === 8 ||c === 9 || r === 6 || r === 7 ||
-                ((r === 3 || r === 4) && (c === 4 || c === 5))) {
+            if (r === 0 || c === 0 ||c === 9 || r === 7){
                 newBrick.style.display = "block";
-                newBrick.style.background = getRandomColor();
+                newBrick.style.background = colors[0];
+                bricks.push(newBrick);
+            }else if(((r === 1 || r === 6) && (c !== 0 || c !== 9)) ||
+                (c === 1 || c === 8)){
+                newBrick.style.display = "block";
+                newBrick.style.background = colors[5];
+                bricks.push(newBrick);
+            }
+            else if((r === 3 || r === 4) && (c === 4 || c === 5)) {
+                newBrick.style.display = "block";
+                newBrick.style.background = colors[3];
+                bricks.push(newBrick);
+            }
+            gameContainer.appendChild(newBrick);
+        }
+    }
+
+    countBricks(bricks.length);
+}
+
+/**
+ * Generate an Square_2-schema
+ */
+function square_2()
+{
+    randomColorPaddleBall();
+    for (let c = 0; c < numberColumn; c++) {
+        for (let r = 0; r < numberRow; r++) {
+            let newBrick = divBricks();
+
+            newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
+            newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+            if (r === 0 || c === 0 || c === 9 || r === 7){
+                newBrick.style.display = "block";
+                newBrick.style.background = colors[0];
+                bricks.push(newBrick);
+            }else if ((r === 2 || r === 5) && (c === 2 || c === 3 || c === 4 || c === 5 || c === 6 || c === 7) ||
+                (r === 3 || r === 4) && (c === 2 || c === 7)) {
+                newBrick.style.display = "block";
+                newBrick.style.background = colors[3];
+                bricks.push(newBrick);
+            }else if ((r === 3 || r === 4) && (c === 3 || c === 4 || c === 5 || c === 6)) {
+                newBrick.style.display = "block";
+                newBrick.style.background = colors[5];
                 bricks.push(newBrick);
             }
             gameContainer.appendChild(newBrick);

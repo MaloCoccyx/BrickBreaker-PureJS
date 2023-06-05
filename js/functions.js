@@ -250,13 +250,9 @@ function countBricks(numbers)
  * @returns {string}
  */
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
 
-    for (let i = 0; i < 6; i++) {
-        // * 16 (number of characters in letters)
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+    const letters = '0123456789ABCDEF';
+    let color = colors[Math.floor(Math.random() * 8)];
 
     return color;
 }

@@ -116,6 +116,19 @@ squareButton.style.marginTop = "10px";
 divStart.appendChild(squareButton);
 
 /**
+ * @type {HTMLAnchorElement} square2Button - Choose Square-2-schema
+ */
+let square2Button = document.createElement('a');
+
+square2Button.id = "square-2";
+square2Button.href = "?start=1&type=square_2";
+square2Button.innerHTML = "<img src=\"img/square_2.png\" alt=\"Square 2 Schema\"  width='200px' height='100px' />";
+square2Button.style.marginRight = "10px";
+square2Button.style.marginTop = "10px";
+
+divStart.appendChild(square2Button);
+
+/**
  * @type {HTMLParagraphElement} countDown - Displayed before game start
  */
 let countDown = document.createElement('p');

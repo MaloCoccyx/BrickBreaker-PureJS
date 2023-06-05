@@ -121,3 +121,8 @@ const paddleWidth = divPaddle.offsetWidth;
  * @type {number} paddleHeight - Height of the paddle in px
  */
 const paddleHeight = divPaddle.offsetHeight;
+
+/**
+ * @type {string[]} colorsBricks - Set colors for bricks
+ */
+const colors = ["#008dff", "#3bce13", "#7849cc", "#ff6600", "#fff219", "#ff0400", "#008dff", "#3bce13"];
