@@ -28,6 +28,8 @@ function generateGame(type)
         random_2();
     else if (type === "space_invader")
         space_invader();
+    else if (type === "square")
+        square();
     else
         classic();
 }

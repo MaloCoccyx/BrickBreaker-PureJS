@@ -60,7 +60,7 @@ let randomButton = document.createElement('a');
 
 randomButton.id = "random";
 randomButton.href = "?start=1&type=random";
-randomButton.innerHTML = "<img src=\"img/random.png\" alt=\"random\"  width='200px' height='100px' />";
+randomButton.innerHTML = "<img src=\"img/random.png\" alt=\"Random Schema\"  width='200px' height='100px' />";
 randomButton.style.marginRight = "10px";
 
 divStart.appendChild(randomButton);
@@ -72,7 +72,7 @@ let random2Button = document.createElement('a');
 
 random2Button.id = "random-2";
 random2Button.href = "?start=1&type=random_2";
-random2Button.innerHTML = "<img src=\"img/random_2.png\" alt=\"random\"  width='200px' height='100px' />";
+random2Button.innerHTML = "<img src=\"img/random_2.png\" alt=\"Random 2 Schema\"  width='200px' height='100px' />";
 random2Button.style.marginRight = "10px";
 
 divStart.appendChild(random2Button);
@@ -84,11 +84,24 @@ let spaceInvaderButton = document.createElement('a');
 
 spaceInvaderButton.id = "space-invader";
 spaceInvaderButton.href = "?start=1&type=space_invader";
-spaceInvaderButton.innerHTML = "<img src=\"img/space_invader.png\" alt=\"random\"  width='200px' height='100px' />";
+spaceInvaderButton.innerHTML = "<img src=\"img/space_invader.png\" alt=\"Space Invader Schema\"  width='200px' height='100px' />";
 spaceInvaderButton.style.marginRight = "10px";
 spaceInvaderButton.style.marginTop = "10px";
 
 divStart.appendChild(spaceInvaderButton);
+
+/**
+ * @type {HTMLAnchorElement} squareButton - Choose Square-schema
+ */
+let squareButton = document.createElement('a');
+
+squareButton.id = "square";
+squareButton.href = "?start=1&type=square";
+squareButton.innerHTML = "<img src=\"img/square.png\" alt=\"Square Schema\"  width='200px' height='100px' />";
+squareButton.style.marginRight = "10px";
+squareButton.style.marginTop = "10px";
+
+divStart.appendChild(squareButton);
 
 /**
  * @type {HTMLParagraphElement} countDown - Displayed before game start

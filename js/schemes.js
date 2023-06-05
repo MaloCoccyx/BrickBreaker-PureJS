@@ -185,7 +185,7 @@ function random_2() {
 }
 
 /**
- * Generate an T-schema
+ * Generate a Space Invader schema
  */
 function space_invader()
 {
@@ -194,7 +194,6 @@ function space_invader()
     for (let c = 0; c < numberColumn; c++) {
         for (let r = 0; r < numberRow; r++) {
             let newBrick = divBricks();
-            let randomImage = Math.floor(Math.random() * 2);
 
             newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
@@ -219,6 +218,31 @@ function space_invader()
                 newBrick.style.display = "block";
                 newBrick.style.backgroundImage = "url('img/space/space_invader_red.svg')";
                 newBrick.style.backgroundSize = "25px";
+                bricks.push(newBrick);
+            }
+            gameContainer.appendChild(newBrick);
+        }
+    }
+
+    countBricks(bricks.length);
+}
+
+/**
+ * Generate an Square-schema
+ */
+function square()
+{
+    for (let c = 0; c < numberColumn; c++) {
+        for (let r = 0; r < numberRow; r++) {
+            let newBrick = divBricks();
+
+            newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
+            newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+
+            if (r === 0 || r === 1 || c === 0 || c === 1 || c === 8 ||c === 9 || r === 6 || r === 7 ||
+                ((r === 3 || r === 4) && (c === 4 || c === 5))) {
+                newBrick.style.display = "block";
+                newBrick.style.background = getRandomColor();
                 bricks.push(newBrick);
             }
             gameContainer.appendChild(newBrick);
