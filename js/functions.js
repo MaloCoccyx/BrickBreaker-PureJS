@@ -19,7 +19,7 @@ function countdown() {
     const timer = setInterval(() => {
         if (count > 0) {
             audioHTMLCountDown.play();
-            countDown.textContent = count;
+            countDown.textContent = count.toString();
             gameContainer.appendChild(countDown);
             count--;
         } else {
@@ -261,6 +261,9 @@ function getRandomColor() {
     return color;
 }
 
+/**
+ * Set random color for paddle & ball except for space invader schema
+ */
 function randomColorPaddleBall()
 {
     if(type !== "space_invader")

@@ -141,6 +141,7 @@ divPaddle.style.borderRadius = "10px 10px 0px 0px";
 divPaddle.style.position = "absolute";
 
 gameContainer.appendChild(divPaddle);
+
 /**
  * @type {HTMLDivElement} divHowToPlay - How to play?
  */

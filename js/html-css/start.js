@@ -4,7 +4,7 @@
 ## Author: Guillaume Lequart                        ##
 ## GitHub: @MaloCoccyx                              ##
 ## Project: BrickBreaker-PureJS                     ##
-## Used to: Generate and Select DOM (Select scheme) ##
+## Used To: Generate and Select DOM (Select scheme) ##
 ## Created: 05/06/2023                              ##
 ##                                                  ##
 ######################################################

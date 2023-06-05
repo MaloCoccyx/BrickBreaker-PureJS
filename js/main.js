@@ -41,16 +41,11 @@ if(start === "1")
 
         /**
          * Function to move the paddle with left & right arrow (keyboard)
-         *
          * @param event movePaddle
          */
         function movePaddle(event)
         {
-            /*let containerLeft = gameContainer.offsetLeft - 500;
-            let containerRight = containerLeft + containerWidth;*/
             let paddleLeft = divPaddle.offsetLeft;
-            let paddleRight = paddleLeft + paddleWidth;
-
 
             const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
             const newPositionLeft = currentPosition - paddleWidth;
@@ -61,7 +56,7 @@ if(start === "1")
             else if((event.key === "ArrowRight" || event.key === "d") && (newPositionRight <= containerWidth + (paddleWidth / 4)))
                 divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
         }
-// Add event on keydown (keyboard key)
+
         document.addEventListener('keydown', movePaddle);
 
         /**
