@@ -48,27 +48,37 @@ const bricks = []; // array to store bricks
 /**
  * @type {number} paddleSpeed - Speed of the paddle in px
  */
-const paddleSpeed = 15;
-
-/**
- * @type {number} ballRadius - Radius of the ball in px
- */
-const ballRadius = 10;
+const paddleSpeed = 20;
 
 /**
  * @type {number} ballDiameter - Diameter of the ball in px
  */
-const ballDiameter = ballRadius * 2;
+const ballDiameter = 20;
 
 /**
- * @type {number} ballSpeedX - X-axis ball speed in px
+ * @type {number} ballSpeedXRef - Initial Y-axis ball speed in px
  */
-let ballSpeedX = 3;
+const ballSpeedXRef = 3;
+
+/**
+ * @type {number} ballSpeedX - Initial X-axis ball speed in px
+ */
+let ballSpeedX = ballSpeedXRef;
+
+/**
+ * @type {number} ballSpeedYRef - Y-axis ball at start
+ */
+const ballSpeedYRef = 3;
 
 /**
  * @type {number} ballSpeedY - Y-axis ball speed in px
  */
-let ballSpeedY = 3;
+let ballSpeedY = ballSpeedYRef;
+
+/**
+ * @type {number} maxRetries - Number of max retries
+ */
+const maxRetries = 5;
 
 /**
  * @type {number} tries - Number of tries

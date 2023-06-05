@@ -10,6 +10,23 @@
 ######################################
 */
 
+function countdown() {
+    let count = 3;
+
+    const timer = setInterval(() => {
+        if (count > 0) {
+            audioHTMLCountDown.play();
+            countDown.textContent = count;
+            document.body.appendChild(countDown);
+            count--;
+        } else {
+            document.body.removeChild(countDown);
+            clearInterval(timer);
+            return true;
+        }
+    }, 1000);
+}
+
 /**
  * Create a div overlay for winning or loose game
  * @returns {HTMLDivElement}
@@ -24,7 +41,6 @@ function createOverlayDiv()
     divOverlay.style.textAlign = "center";
     divOverlay.style.paddingTop = "20px";
     divOverlay.style.zIndex = "9999";
-    divOverlay.style.position = "absolute";
     divOverlay.style.position = "absolute";
     divOverlay.style.border = "1px solid white";
     return divOverlay;
@@ -129,7 +145,7 @@ function winning()
 function gameOver()
 {
     const divGameOver = createOverlayDiv();
-    divGameOver.style.background = "#cc0808";
+    divGameOver.style.background = "#cc0808";0
     divGameOver.innerHTML = "<h1>Game over!</h1>";
 
     // Button
@@ -207,12 +223,6 @@ function deleteOverlay()
 function chooseScheme()
 {
     showOverlay().appendChild(divStart);
-
-    // Choose classic scheme
-    classicButton.onclick = function () {
-        generateGame("classic");
-        deleteOverlay();
-    };
 }
 
 /**
@@ -222,6 +232,8 @@ function checkStart()
 {
     if(start === "1" && (type !== "" || type !== null))
     {
+        divTries.innerHTML = "Try : <strong>1 / " + maxRetries + "</strong>";
+        countdown();
         generateGame(type);
     }
     else
@@ -248,6 +260,7 @@ function getRandomColor() {
     let color = '#';
 
     for (let i = 0; i < 6; i++) {
+        // * 16 (number of characters in letters)
         color += letters[Math.floor(Math.random() * 16)];
     }
 
