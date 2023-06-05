@@ -260,3 +260,21 @@ function getRandomColor() {
 
     return color;
 }
+
+function randomColorPaddleBall()
+{
+    if(type !== "space_invader")
+    {
+        const colorBall = getRandomColor();
+        const colorPaddle = getRandomColor();
+
+        divPaddle.style.background = colorPaddle;
+        divPaddle.style.borderColor = colorPaddle;
+        divPaddle.style.boxShadow = "0px 0px 10px " + colorPaddle + ", 0px 0px 3px white, 0px 0px 10px " + colorPaddle;
+
+        divBall.style.background = colorBall;
+        divBall.style.borderColor = colorBall;
+        divBall.style.boxShadow = colorBall;
+        divBall.style.boxShadow = "0px 0px 10px " + colorBall + ", 0px 0px 3px white, 0px 0px 10px " + colorBall;
+    }
+}

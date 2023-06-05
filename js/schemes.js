@@ -16,6 +16,7 @@
  */
 function divBricks()
 {
+    randomColorPaddleBall();
     const divBrick = document.createElement('div');
 
     divBrick.className = 'brick';
@@ -32,6 +33,7 @@ function divBricks()
  */
 function classic()
 {
+    randomColorPaddleBall();
     for (let c = 0; c < numberColumn; c++)
     {
         // Set rows
@@ -60,30 +62,24 @@ function classic()
  */
 function letter_m()
 {
+    randomColorPaddleBall();
     for (let c = 0; c < numberColumn; c++) {
-        // Set rows
         for (let r = 0; r < numberRow; r++) {
             let newBrick = divBricks();
-            newBrick.className = 'brick';
 
-            // Set the position of the brick
             newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
             newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
 
-            // Customize the brick's appearance
-            if (c === r || c === numberColumn - 1 - r) {
-                newBrick.style.background = 'green'; // Color for the letter "M"
-            } else {
-                newBrick.style.background = 'white'; // Color for the empty space
+            if (c === 0 || c === 1 || c === 8 ||c === 9 ||
+                (r === 0 && (c === 2 ||c === 7)) ||
+                (r === 1 && (c === 2 || c === 3 || c === 6 || c === 7)) ||
+                (r === 2 && (c === 3 || c === 4 || c === 5 || c === 6)) ||
+                ((r === 3 || r === 4) && (c === 4 || c === 5))
+            ) {
+                newBrick.style.display = "block";
+                newBrick.style.background = getRandomColor();
+                bricks.push(newBrick);
             }
-
-            newBrick.style.width = brickWidth + 'px';
-            newBrick.style.height = brickHeight + 'px';
-            newBrick.style.position = 'absolute';
-            newBrick.style.background = getRandomColor();
-
-            // Push brick into the array
-            bricks.push(newBrick);
             gameContainer.appendChild(newBrick);
         }
     }
@@ -96,6 +92,7 @@ function letter_m()
  */
 function letter_t()
 {
+    randomColorPaddleBall();
     const midColumn = Math.floor(numberColumn / 2);
     for (let c = 0; c < numberColumn; c++) {
         for (let r = 0; r < numberRow; r++) {
@@ -120,6 +117,7 @@ function letter_t()
  * Simple and random generation
  */
 function random() {
+    randomColorPaddleBall();
     const brickSpacing = 10;
 
     const gridWidth = numberColumn * (brickWidth + brickSpacing);
@@ -153,6 +151,7 @@ function random() {
  * Random generation
  */
 function random_2() {
+    randomColorPaddleBall();
     const midColumn = Math.floor(numberColumn / 2);
 
     for (let c = 0; c < numberColumn; c++) {
@@ -189,6 +188,7 @@ function random_2() {
  */
 function space_invader()
 {
+    randomColorPaddleBall();
     gameContainer.style.backgroundImage = "url('img/space/terre.png')";
     numberRow = 7;
     for (let c = 0; c < numberColumn; c++) {
@@ -232,6 +232,7 @@ function space_invader()
  */
 function square()
 {
+    randomColorPaddleBall();
     for (let c = 0; c < numberColumn; c++) {
         for (let r = 0; r < numberRow; r++) {
             let newBrick = divBricks();

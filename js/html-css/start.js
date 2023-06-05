@@ -54,6 +54,18 @@ letterTButton.style.marginRight = "10px";
 divStart.appendChild(letterTButton);
 
 /**
+ * @type {HTMLAnchorElement} letterMButton - Choose M-schema
+ */
+let letterMButton = document.createElement('a');
+
+letterMButton.id = "m-schema";
+letterMButton.href = "?start=1&type=letter_m";
+letterMButton.innerHTML = "<img src=\"img/m-schema.png\" alt=\"M-schema\"  width='200px' height='100px' />";
+letterMButton.style.marginRight = "10px";
+
+divStart.appendChild(letterMButton);
+
+/**
  * @type {HTMLAnchorElement} randomButton - Choose classic random schema
  */
 let randomButton = document.createElement('a');
