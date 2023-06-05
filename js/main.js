@@ -80,7 +80,10 @@ if(start === "1")
                     gameContainer.removeChild(currentBrick);
                     bricks.splice(i, 1);
 
-                    audioHTMLBrick.play();
+                    if(type === "space_invader")
+                        audioHTMLBrickSpaceInvader.play();
+                    else
+                        audioHTMLBrick.play();
 
                     scoreCurrent = scoreCurrent + 100;
                     divScore.innerHTML = "Score : <strong>" + scoreCurrent + " / " + scoreMax + "</strong>";
@@ -104,7 +107,10 @@ if(start === "1")
                     if(!(Math.abs(ballSpeedY) > 1.8 * Math.abs(ballSpeedYRef)))
                         ballSpeedY = ballSpeedY *= 1.1;
 
-                    audioHTMLBallPaddle.play();
+                    if(type === "space_invader")
+                        audioHTMLBounceSpaceInvader.play();
+                    else
+                        audioHTMLBounce.play();
 
                     break;
                 }
@@ -158,7 +164,10 @@ if(start === "1")
          */
         function retries()
         {
-            audioHTMLRetry.play();
+            if(type === "space_invader")
+                audioHTMLRetrySpaceInvader.play();
+            else
+                audioHTMLRetry.play();
             tries++;
             divBall.style.left = divPaddle.offsetLeft.toString() + "px";
             divBall.style.top = "50%";

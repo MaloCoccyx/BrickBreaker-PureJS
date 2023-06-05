@@ -10,50 +10,16 @@
 ##############################################
 */
 
-
-/**
- * @type {HTMLAudioElement} audioHTMLBrick - Played when a brick breaks
- */
-const audioHTMLBrick = document.createElement('audio');
-
-audioHTMLBrick.id = "soundBrick";
-audioHTMLBrick.src = "sound/BreakBrick.aac";
-audioHTMLBrick.type = "audio/aac";
-
-document.body.appendChild(audioHTMLBrick);
-
-/**
- * @type {HTMLAudioElement} audioHTMLBallPaddle - Played when the ball touch the paddle
- */
-const audioHTMLBallPaddle = document.createElement('audio');
-
-audioHTMLBallPaddle.id = "soundBallPaddle";
-audioHTMLBallPaddle.src = "sound/Bounce.aac";
-audioHTMLBallPaddle.type = "audio/aac";
-
-document.body.appendChild(audioHTMLBallPaddle);
-
 /**
  * @type {HTMLAudioElement} audioHTMLCountDown - Played when before game start
  */
 const audioHTMLCountDown = document.createElement('audio');
 
-audioHTMLCountDown.id = "soundCountDpwn";
+audioHTMLCountDown.id = "soundCountDown";
 audioHTMLCountDown.src = "sound/CountDown.mp4";
 audioHTMLCountDown.type = "audio/mp4";
 
 document.body.appendChild(audioHTMLCountDown);
-
-/**
- * @type {HTMLAudioElement} audioHTMLRetry - Played when the ball is lost
- */
-const audioHTMLRetry = document.createElement('audio');
-
-audioHTMLRetry.id = "soundRetry";
-audioHTMLRetry.src = "sound/Retry.aac";
-audioHTMLRetry.type = "audio/aac";
-
-document.body.appendChild(audioHTMLRetry);
 
 /**
  * @type {HTMLAudioElement} audioHTMLLoose - Played when player loose the game
@@ -73,4 +39,70 @@ audioHTMLWinning.id = "soundWinning";
 audioHTMLWinning.src = "sound/Win.aac";
 audioHTMLWinning.type = "audio/aac";
 
-document.body.appendChild(audioHTMLBallPaddle);
+document.body.appendChild(audioHTMLWinning);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLBrick - Played when a brick breaks
+ */
+const audioHTMLBrick = document.createElement('audio');
+
+audioHTMLBrick.id = "soundBrick";
+audioHTMLBrick.src = "sound/BreakBrick.aac";
+audioHTMLBrick.type = "audio/aac";
+
+document.body.appendChild(audioHTMLBrick);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLBounce - Played when the ball bounce
+ */
+const audioHTMLBounce = document.createElement('audio');
+
+audioHTMLBounce.id = "soundBounce";
+audioHTMLBounce.src = "sound/Bounce.aac";
+audioHTMLBounce.type = "audio/aac";
+
+document.body.appendChild(audioHTMLBounce);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLRetry - Played when the ball is lost
+ */
+const audioHTMLRetry = document.createElement('audio');
+
+audioHTMLRetry.id = "soundRetry";
+audioHTMLRetry.src = "sound/Retry.aac";
+audioHTMLRetry.type = "audio/aac";
+
+document.body.appendChild(audioHTMLRetry);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLBrickSpaceInvader - Played when a brick breaks in space invader schema
+ */
+const audioHTMLBrickSpaceInvader = document.createElement('audio');
+
+audioHTMLBrickSpaceInvader.id = "soundBrick";
+audioHTMLBrickSpaceInvader.src = "sound/space/invaderKilled.wav";
+audioHTMLBrickSpaceInvader.type = "audio/wav";
+
+document.body.appendChild(audioHTMLBrickSpaceInvader);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLBounceSpaceInvader -Played when the ball bounce in space invader schema
+ */
+const audioHTMLBounceSpaceInvader = document.createElement('audio');
+
+audioHTMLBounceSpaceInvader.id = "soundBounce";
+audioHTMLBounceSpaceInvader.src = "sound/space/shoot.wav";
+audioHTMLBounceSpaceInvader.type = "audio/wav";
+
+document.body.appendChild(audioHTMLBounceSpaceInvader);
+
+/**
+ * @type {HTMLAudioElement} audioHTMLRetrySpaceInvader - Played when the ball is lost in space invader schema
+ */
+const audioHTMLRetrySpaceInvader = document.createElement('audio');
+
+audioHTMLRetrySpaceInvader.id = "soundRetry";
+audioHTMLRetrySpaceInvader.src = "sound/space/explosion.wav";
+audioHTMLRetrySpaceInvader.type = "audio/wav";
+
+document.body.appendChild(audioHTMLRetrySpaceInvader);

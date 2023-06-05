@@ -189,6 +189,7 @@ function random_2() {
  */
 function space_invader()
 {
+    gameContainer.style.backgroundImage = "url('img/space/terre.png')";
     numberRow = 7;
     for (let c = 0; c < numberColumn; c++) {
         for (let r = 0; r < numberRow; r++) {
@@ -204,7 +205,8 @@ function space_invader()
                 (r === 4 && (c === 0 || c === 3 || c === 4 || c === 5 || c === 6 || c === 9)) ||
                 (r === 5 && (c === 0 || c === 9))) {
                 newBrick.style.display = "block";
-                newBrick.style.backgroundImage = "url('img/space/space_invader.svg')";
+                newBrick.style.backgroundImage = "url('img/space/space_invader_white.svg')";
+                newBrick.style.backgroundSize = "25px";
                 bricks.push(newBrick);
             }else if((r === 0 && (c === 2 || c === 7)) ||
                 (r === 1 && (c === 2 || c === 7)) ||

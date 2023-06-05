@@ -13,6 +13,7 @@
 document.body.style.margin = "0px";
 document.body.style.padding = "0px";
 document.body.style.background = "black";
+document.body.style.fontFamily = "Oswald";
 
 /**
  * @type {HTMLHeadingElement} divTitle - The Title
@@ -28,6 +29,7 @@ divTitle.style.padding = "10px";
 divTitle.style.margin = "0px";
 divTitle.style.textAlign = "center";
 divTitle.style.position = "relative";
+divTitle.style.lineHeight = "33px";
 
 document.body.appendChild(divTitle);
 
@@ -38,9 +40,7 @@ const divSubTitle = document.createElement('h2');
 
 divSubTitle.style.height = 60 + "px";
 divSubTitle.style.margin = "0px";
-divSubTitle.style.lineHeight = "50px";
-divSubTitle.style.borderBottom = "1px solid red";
-divSubTitle.style.boxShadow = "1px 0px 5px red";
+divSubTitle.style.lineHeight = "55px";
 divSubTitle.style.color = "white";
 divSubTitle.style.textAlign = "center";
 divSubTitle.innerHTML = "Author : <strong>Lequart Guillaume</strong> | <a href=\"https://github.com/MaloCoccyx/\">@MaloCoccyx</a> |";
@@ -114,11 +114,13 @@ const divBall = document.createElement('div');
 divBall.className = "ball";
 divBall.style.width = 20 + "px";
 divBall.style.height = 20 + "px";
-divBall.style.background = "red";
+divBall.style.background = "black";
 divBall.style.left = "35%";
 divBall.style.top = "50%";
 divBall.style.position = "absolute";
-divBall.style.borderRadius = 50 + "%";
+divBall.style.borderRadius = "50%";
+divBall.style.border = "1px solid white";
+divBall.style.boxShadow = "0px 0px 10px black, 0px 0px 3px white, 0px 0px 10px black";
 
 gameContainer.appendChild(divBall);
 
@@ -130,10 +132,12 @@ const divPaddle = document.createElement('div');
 divPaddle.className = "paddle";
 divPaddle.style.width = "100px";
 divPaddle.style.height = "20px";
-divPaddle.style.background = "blue";
+divPaddle.style.background = "black";
+divPaddle.style.border = "1px solid white";
+divPaddle.style.boxShadow = " 0px 3px 3px black, 0px 3px 10px white, 0px 3px 10px black";
 divPaddle.style.left = "40%";
 divPaddle.style.top = "475px";
-divPaddle.style.borderRadius = "10px";
+divPaddle.style.borderRadius = "10px 10px 0px 0px";
 divPaddle.style.position = "absolute";
 
 gameContainer.appendChild(divPaddle);
