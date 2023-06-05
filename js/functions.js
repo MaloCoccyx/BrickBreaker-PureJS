@@ -10,6 +10,9 @@
 ######################################
 */
 
+/**
+ * Countdown, used in another function to start the game once at 0
+ */
 function countdown() {
     let count = 3;
 
@@ -206,15 +209,6 @@ function showOverlay()
 
     document.body.appendChild(divBackground);
     return divBackground;
-}
-
-/**
- * Delete the overlay
- */
-function deleteOverlay()
-{
-    const divBackground = document.querySelector('#background');
-    document.body.removeChild(divBackground);
 }
 
 /**

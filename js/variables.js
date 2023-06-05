@@ -46,11 +46,6 @@ let brickHeight = 20; // in px
 const bricks = []; // array to store bricks
 
 /**
- * @type {number} paddleSpeed - Speed of the paddle in px
- */
-const paddleSpeed = 20;
-
-/**
  * @type {number} ballDiameter - Diameter of the ball in px
  */
 const ballDiameter = 20;
@@ -111,6 +106,11 @@ let start = urlParams.get('start');
  * @type {string} scoreCurrent - Current Score, updated when ball collide with a brick
  */
 let type = urlParams.get('type');
+
+/**
+ * @type {number} paddleSpeed - Speed of the paddle in px
+ */
+const paddleSpeed = 20;
 
 /**
  * @type {number} paddleWidth - Width of the paddle in px

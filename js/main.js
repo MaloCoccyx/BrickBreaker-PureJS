@@ -44,14 +44,19 @@ if(start === "1")
          */
         function movePaddle(event)
         {
-            let containerLeft = gameContainer.offsetLeft;
-            let containerRight = containerLeft + containerWidth;
+            /*let containerLeft = gameContainer.offsetLeft - 500;
+            let containerRight = containerLeft + containerWidth;*/
             let paddleLeft = divPaddle.offsetLeft;
             let paddleRight = paddleLeft + paddleWidth;
 
-            if(event.key === "ArrowLeft" && paddleLeft > containerLeft || event.key === "q" && paddleLeft > containerLeft || event.key === "a" && paddleLeft > containerLeft)
+
+            const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
+            const newPositionLeft = currentPosition - paddleWidth;
+            const newPositionRight = currentPosition + paddleWidth;
+
+            if((event.key === "ArrowLeft" || event.key === "q" ||  event.key === "a") && newPositionLeft >= (-paddleWidth / 4))
                 divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';
-            else if(event.key === "ArrowRight" && paddleRight < (containerRight - 18) || event.key === "d" && paddleRight < (containerRight - 18))
+            else if((event.key === "ArrowRight" || event.key === "d") && (newPositionRight <= containerWidth + (paddleWidth / 4)))
                 divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
         }
 // Add event on keydown (keyboard key)

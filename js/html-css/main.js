@@ -132,7 +132,8 @@ divPaddle.style.width = "100px";
 divPaddle.style.height = "20px";
 divPaddle.style.background = "blue";
 divPaddle.style.left = "40%";
-divPaddle.style.top = 475 + "px";
+divPaddle.style.top = "475px";
+divPaddle.style.borderRadius = "10px";
 divPaddle.style.position = "absolute";
 
 gameContainer.appendChild(divPaddle);
