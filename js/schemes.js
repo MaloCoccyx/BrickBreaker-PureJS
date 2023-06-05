@@ -32,8 +32,6 @@ function divBricks()
  */
 function classic()
 {
-    numberColumn = 10;
-    numberRow = 8;
     for (let c = 0; c < numberColumn; c++)
     {
         // Set rows
@@ -62,9 +60,6 @@ function classic()
  */
 function letter_m()
 {
-    numberColumn = 10;
-    numberRow = 10;
-
     for (let c = 0; c < numberColumn; c++) {
         // Set rows
         for (let r = 0; r < numberRow; r++) {
@@ -101,8 +96,6 @@ function letter_m()
  */
 function letter_t()
 {
-    numberColumn = 10;
-    numberRow = 8;
     const midColumn = Math.floor(numberColumn / 2);
     for (let c = 0; c < numberColumn; c++) {
         for (let r = 0; r < numberRow; r++) {
@@ -127,8 +120,6 @@ function letter_t()
  * Simple and random generation
  */
 function random() {
-    numberColumn = 10;
-    numberRow = 8;
     const brickSpacing = 10;
 
     const gridWidth = numberColumn * (brickWidth + brickSpacing);
@@ -162,9 +153,6 @@ function random() {
  * Random generation
  */
 function random_2() {
-    numberColumn = 10;
-    numberRow = 8;
-
     const midColumn = Math.floor(numberColumn / 2);
 
     for (let c = 0; c < numberColumn; c++) {
@@ -187,6 +175,48 @@ function random_2() {
                 c === (midColumn + Math.floor(Math.random() * 10) + 1)) {
 
                 newBrick.style.background = getRandomColor();
+                bricks.push(newBrick);
+            }
+            gameContainer.appendChild(newBrick);
+        }
+    }
+
+    countBricks(bricks.length);
+}
+
+/**
+ * Generate an T-schema
+ */
+function space_invader()
+{
+    numberRow = 7;
+    for (let c = 0; c < numberColumn; c++) {
+        for (let r = 0; r < numberRow; r++) {
+            let newBrick = divBricks();
+            let randomImage = Math.floor(Math.random() * 2);
+
+            newBrick.style.left = (c * (brickWidth + 10) + 5) + 'px';
+            newBrick.style.top = (r * (brickHeight + 10) + 5) + 'px';
+
+            if ((r === 1 && (c === 3 || c === 4 || c === 5 || c === 6)) ||
+                (r === 2 && (c === 1 || c === 4 || c === 5 || c === 8)) ||
+                (r === 3 && (c === 0 || c === 1 || c === 3 || c === 4 || c === 5 || c === 6 || c === 8 || c === 9)) ||
+                (r === 4 && (c === 0 || c === 3 || c === 4 || c === 5 || c === 6 || c === 9)) ||
+                (r === 5 && (c === 0 || c === 9))) {
+                newBrick.style.display = "block";
+                newBrick.style.backgroundImage = "url('img/space/space_invader.svg')";
+                bricks.push(newBrick);
+            }else if((r === 0 && (c === 2 || c === 7)) ||
+                (r === 1 && (c === 2 || c === 7)) ||
+                (r === 2 && (c === 2 || c === 7)) ||
+                (r === 3 && (c === 2 || c === 7)) ||
+                (r === 4 && (c === 2 || c === 7)) ||
+                (r === 5 && (c === 2 || c === 7)) ||
+                (r === 6 && (c === 3 || c === 6))
+            ){
+                newBrick.style.display = "block";
+                newBrick.style.backgroundImage = "url('img/space/space_invader_red.svg')";
+                newBrick.style.backgroundSize = "25px";
                 bricks.push(newBrick);
             }
             gameContainer.appendChild(newBrick);

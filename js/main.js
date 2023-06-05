@@ -26,6 +26,8 @@ function generateGame(type)
         random();
     else if (type === "random_2")
         random_2();
+    else if (type === "space_invader")
+        space_invader();
     else
         classic();
 }

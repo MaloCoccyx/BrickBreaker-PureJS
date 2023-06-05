@@ -199,8 +199,8 @@ gameContainer.appendChild(divPaddle);
 const divStart = document.createElement('div');
 
 divStart.id = "start";
-divStart.style.width = 1000 + "px";
-divStart.style.height = 250 + "px";
+divStart.style.width = 75 + "%";
+divStart.style.maxHeight = 50 + "%";
 divStart.style.background = "#76a69e";
 divStart.style.color = "white";
 divStart.style.textAlign = "center";
@@ -251,12 +251,25 @@ divStart.appendChild(randomButton);
  */
 let random2Button = document.createElement('a');
 
-random2Button.id = "random";
+random2Button.id = "random-2";
 random2Button.href = "?start=1&type=random_2";
 random2Button.innerHTML = "<img src=\"img/random_2.png\" alt=\"random\"  width='200px' height='100px' />";
 random2Button.style.marginRight = "10px";
 
 divStart.appendChild(random2Button);
+
+/**
+ * @type {HTMLAnchorElement} spaceInvaderButton - Choose Space_invader-schema
+ */
+let spaceInvaderButton = document.createElement('a');
+
+spaceInvaderButton.id = "space-invader";
+spaceInvaderButton.href = "?start=1&type=space_invader";
+spaceInvaderButton.innerHTML = "<img src=\"img/space_invader.png\" alt=\"random\"  width='200px' height='100px' />";
+spaceInvaderButton.style.marginRight = "10px";
+spaceInvaderButton.style.marginTop = "10px";
+
+divStart.appendChild(spaceInvaderButton);
 
 /**
  * @type {HTMLParagraphElement} countDown - Displayed before game start

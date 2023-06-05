@@ -23,12 +23,12 @@ const containerHeight = gameContainer.offsetHeight;
 /**
  * @type {number} numberRow - Number of rows of bricks
  */
-let numberRow = 1;
+let numberRow = 8;
 
 /**
  * @type {number} numberColumn - Number of brick columns
  */
-let numberColumn = 1;
+let numberColumn = 10;
 
 /**
  * @type {number} brickWidth - Width of bricks in pixels
