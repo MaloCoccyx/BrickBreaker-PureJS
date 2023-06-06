@@ -39,6 +39,7 @@ function generateGame(type)
 if(start === "1")
 {
     setTimeout(() => {
+
         /**
          * Start the game loop using requestAnimationFrame
          */
@@ -60,8 +61,6 @@ if(start === "1")
             const currentPosition = parseInt(divPaddle.style.left) + (paddleWidth / 2) || 0;
             const newPositionLeft = currentPosition - paddleWidth;
             const newPositionRight = currentPosition + paddleWidth;
-            
-            console.log(currentPosition);
 
             if((paddlePosX > mousePosX) && newPositionLeft >= (-paddleWidth / 4))
                 divPaddle.style.left = (paddleLeft - 5) + 'px';
