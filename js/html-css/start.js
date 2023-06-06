@@ -26,8 +26,8 @@ divStart.style.marginLeft = "auto";
 divStart.style.marginTop = "5%";
 divStart.style.zIndex = "9999";
 divStart.style.border = "1px solid white";
-divStart.innerHTML = "<h1>What scheme do you want to play?</h1>" +
-    "<h2>Choose it by clicking on the corresponding scheme</h2>";
+divStart.innerHTML = "<h1>What level do you want to play?</h1>" +
+    "<h2>Choose it by clicking on the corresponding level</h2>";
 
 /**
  * @type {HTMLAnchorElement} classicButton - Choose classic scheme
