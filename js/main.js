@@ -41,6 +41,25 @@ if(start === "1")
     setTimeout(() => {
         const gameInterval = setInterval(gameLoop, 10);
 
+        document.onmousemove = function mouseMove(event){
+            let mousePosX = event.clientX + window.pageXOffset;
+
+            let rect = divPaddle.getBoundingClientRect();
+            let paddlePosX = rect.x + (paddleWidth / 2);
+
+            let paddleLeft = divPaddle.offsetLeft;
+
+            const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
+            const newPositionLeft = currentPosition - paddleWidth;
+            const newPositionRight = currentPosition + paddleWidth;
+
+            if((paddlePosX > mousePosX) && newPositionLeft >= (-paddleWidth / 4))
+                divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';
+            else if((paddlePosX < mousePosX) && (newPositionRight <= containerWidth + (paddleWidth / 4)))
+                divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
+
+        }
+
         /**
          * Function to move the paddle with left & right arrow (keyboard)
          * @param event movePaddle
@@ -53,15 +72,12 @@ if(start === "1")
             const newPositionLeft = currentPosition - paddleWidth;
             const newPositionRight = currentPosition + paddleWidth;
 
-            // Mouse control
-            let MousePosX = 0;
-
-
-
             if((event.key === "ArrowLeft" || event.key === "q" ||  event.key === "a") && newPositionLeft >= (-paddleWidth / 4))
                 divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';
             else if((event.key === "ArrowRight" || event.key === "d") && (newPositionRight <= containerWidth + (paddleWidth / 4)))
                 divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
+
+            console.log(mouseMove());
         }
 
         document.addEventListener('keydown', movePaddle);
@@ -130,15 +146,12 @@ if(start === "1")
             let ballLeft = divBall.offsetLeft;
             let ballTop = divBall.offsetTop;
 
-            if (ballLeft <= 0 || ballLeft >= containerWidth - ballDiameter) {
-                // Reverse the horizontal direction of the ball when it hits the edges
+            // Reverse the horizontal direction of the ball when it hits the edges
+            if (ballLeft <= 0 || ballLeft >= containerWidth - ballDiameter)
                 ballSpeedX = -ballSpeedX;
-            }
 
             if (ballTop >= containerHeight - ballDiameter && tries < maxRetries)
-            {
                 return retries();
-            }
             else if (ballTop >= containerHeight - ballDiameter && tries >= maxRetries)
             {
                 clearInterval(gameInterval);
@@ -146,9 +159,7 @@ if(start === "1")
                 return gameOver();
             }
             else if (ballTop <= 0)
-            {
                 ballSpeedY = -ballSpeedY;
-            }
             else if(bricks.length <= 0)
             {
                 clearInterval(gameInterval);
