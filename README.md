@@ -1,4 +1,5 @@
 # Brick Breaker in Pure JavaScript
+[![forthebadge](https://forthebadge.com/images/badges/it-works-why.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 
 Creation of a "Brick Breaker" mini game, as part of my DISII training.
 
@@ -19,16 +20,16 @@ Look above the game window for the number of tries.
 
 ## Files
 
-**index.html** - Contains basic HTML code and loads JavaScript files
-**js/main.js** - Contains the main functions for the operation of the game
-**js/variables.js** - Contains variables
-**js/functions.js** - Contains functions not necessary for the operation of the game
-**js/schemes.js** - Contains the Schematics to generate the bricks
-**js/html-css/main.js** - Contains the main HTML & CSS of the site
-**js/html-css/start.js** - Contains the HTML & CSS used to choose a level
-**js/html-css/sounds.js** - Contains the HTML & CSS used for sound
-**img/*** - Contains the images
-**sound/*** - Contains the sounds
+* **index.html** - Contains basic HTML code and loads JavaScript files
+* **js/main.js** - Contains the main functions for the operation of the game
+* **js/variables.js** - Contains variables
+* **js/functions.js** - Contains functions not necessary for the operation of the game
+* **js/schemes.js** - Contains the Schematics to generate the bricks
+* **js/html-css/main.js** - Contains the main HTML & CSS of the site
+* **js/html-css/start.js** - Contains the HTML & CSS used to choose a level
+* **js/html-css/sounds.js** - Contains the HTML & CSS used for sound
+* **img/*** - Contains the images
+* **sound/*** - Contains the sounds
 
 
 **Lequart Guillaume** alias [@MaloCoccyx](https://github.com/MaloCoccyx/ "@MaloCoccyx")
