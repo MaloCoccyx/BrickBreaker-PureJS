@@ -157,6 +157,7 @@ divHowToPlay.style.background = "white";
 divHowToPlay.innerHTML = "<h1>How to play?</h1>" +
     "<h2>You have to move the paddle, to bounce the ball on it and break all the bricks.</h2>" +
     "<p style='font-size: large;'>Move the paddle with the mouse.</p>" +
+    "<p style='font-size: large;'>\u26a0 Attention the mouse disappears once the game is launched.</p>" +
     "<p style='font-size: large;'>Move the paddle left or right with \u2190 & \u2192 OR letter Q / A & D.</p>" +
     "<p style='font-size: large;'>\u26a0 The ball increases its speed by 10% up to 80% with each bounce on the paddle.</p>" +
     "<p style='font-size: large;'>Look above the game window for the number of tries.</p>";

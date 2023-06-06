@@ -38,6 +38,7 @@ function generateGame(type)
 
 if(start === "1")
 {
+    document.body.style.cursor = "none";
     setTimeout(() => {
 
         /**
@@ -51,22 +52,11 @@ if(start === "1")
          * Move the paddle when mouse move on X-axis
          */
         document.onmousemove = function mouseMove(event){
-            let mousePosX = event.clientX + window.pageXOffset;
+            let mousePosX = event.clientX / window.innerWidth;
 
-            let rect = divPaddle.getBoundingClientRect();
-            let paddlePosX = rect.x;
+            let newPosition = (gameContainer.offsetWidth - paddleWidth) * mousePosX;
 
-            let paddleLeft = divPaddle.offsetLeft;
-
-            const currentPosition = parseInt(divPaddle.style.left) + (paddleWidth / 2) || 0;
-            const newPositionLeft = currentPosition - paddleWidth;
-            const newPositionRight = currentPosition + paddleWidth;
-
-            if((paddlePosX > mousePosX) && newPositionLeft >= (-paddleWidth / 4))
-                divPaddle.style.left = (paddleLeft - 5) + 'px';
-            else if((paddlePosX < mousePosX) && (newPositionRight <= containerWidth + (paddleWidth / 4)))
-                divPaddle.style.left = (paddleLeft + 5) + 'px';
-
+            divPaddle.style.left = newPosition + 'px';
         }
 
         /**
@@ -171,16 +161,16 @@ if(start === "1")
                 return retries();
             else if (ballTop >= containerHeight - ballDiameter && tries >= maxRetries)
             {
-                clearInterval(gameInterval);
                 audioHTMLLoose.play();
+                document.body.style.cursor = "auto";
                 return gameOver();
             }
             else if (ballTop <= 0)
                 ballSpeedY = -ballSpeedY;
             else if(bricks.length <= 0)
             {
-                clearInterval(gameInterval);
                 audioHTMLWinning.play();
+                document.body.style.cursor = "auto";
                 return winning();
             }
 
@@ -188,7 +178,7 @@ if(start === "1")
             divBall.style.top = (ballTop + ballSpeedY) + 'px';
 
             detectCollision();
-            gameInterval = requestAnimationFrame(gameLoop);
+            let gameInterval = requestAnimationFrame(gameLoop);
         }
 
         /**
@@ -206,7 +196,7 @@ if(start === "1")
             ballSpeedX = ballSpeedXRef;
             ballSpeedY = ballSpeedYRef;
             divTries.innerHTML = "Try : <strong>" + tries + " / " + maxRetries + "</strong>";
-            gameLoop();
+            startGame();
         }
 
         startGame();

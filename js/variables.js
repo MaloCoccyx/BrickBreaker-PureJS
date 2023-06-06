@@ -53,7 +53,7 @@ const ballDiameter = 20;
 /**
  * @type {number} ballSpeedXRef - Initial Y-axis ball speed in px
  */
-const ballSpeedXRef = 3;
+const ballSpeedXRef = 2;
 
 /**
  * @type {number} ballSpeedX - Initial X-axis ball speed in px
@@ -63,7 +63,7 @@ let ballSpeedX = ballSpeedXRef;
 /**
  * @type {number} ballSpeedYRef - Y-axis ball at start
  */
-const ballSpeedYRef = 3;
+const ballSpeedYRef = 2;
 
 /**
  * @type {number} ballSpeedY - Y-axis ball speed in px
