@@ -39,24 +39,34 @@ function generateGame(type)
 if(start === "1")
 {
     setTimeout(() => {
-        const gameInterval = setInterval(gameLoop, 10);
+        /**
+         * Start the game loop using requestAnimationFrame
+         */
+        function startGame() {
+            let gameInterval = requestAnimationFrame(gameLoop);
+        }
 
+        /**
+         * Move the paddle when mouse move on X-axis
+         */
         document.onmousemove = function mouseMove(event){
             let mousePosX = event.clientX + window.pageXOffset;
 
             let rect = divPaddle.getBoundingClientRect();
-            let paddlePosX = rect.x + (paddleWidth / 2);
+            let paddlePosX = rect.x;
 
             let paddleLeft = divPaddle.offsetLeft;
 
-            const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
+            const currentPosition = parseInt(divPaddle.style.left) + (paddleWidth / 2) || 0;
             const newPositionLeft = currentPosition - paddleWidth;
             const newPositionRight = currentPosition + paddleWidth;
+            
+            console.log(currentPosition);
 
             if((paddlePosX > mousePosX) && newPositionLeft >= (-paddleWidth / 4))
-                divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';
+                divPaddle.style.left = (paddleLeft - 5) + 'px';
             else if((paddlePosX < mousePosX) && (newPositionRight <= containerWidth + (paddleWidth / 4)))
-                divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
+                divPaddle.style.left = (paddleLeft + 5) + 'px';
 
         }
 
@@ -68,7 +78,7 @@ if(start === "1")
         {
             let paddleLeft = divPaddle.offsetLeft;
 
-            const currentPosition = parseInt(divPaddle.style.left) + 50 || 0;
+            const currentPosition = parseInt(divPaddle.style.left) + (paddleWidth / 2) || 0;
             const newPositionLeft = currentPosition - paddleWidth;
             const newPositionRight = currentPosition + paddleWidth;
 
@@ -76,8 +86,6 @@ if(start === "1")
                 divPaddle.style.left = (paddleLeft - paddleSpeed) + 'px';
             else if((event.key === "ArrowRight" || event.key === "d") && (newPositionRight <= containerWidth + (paddleWidth / 4)))
                 divPaddle.style.left = (paddleLeft + paddleSpeed + 'px');
-
-            console.log(mouseMove());
         }
 
         document.addEventListener('keydown', movePaddle);
@@ -117,6 +125,16 @@ if(start === "1")
                     divBall.offsetTop + ballDiameter >= divPaddle.offsetTop &&
                     divBall.offsetLeft + ballDiameter >= divPaddle.offsetLeft &&
                     divBall.offsetLeft <= divPaddle.offsetLeft + paddleWidth) {
+
+                    // Re check the pos of the ball
+                    if (divBall.offsetTop + ballDiameter >= divPaddle.offsetTop && 
+                        divBall.offsetTop <= divPaddle.offsetTop + paddleHeight) {
+                        if (ballSpeedY > 0) {
+                            divBall.style.top = (divPaddle.offsetTop - ballDiameter) + "px";
+                        } else {
+                            divBall.style.top = (divPaddle.offsetTop + paddleHeight) + "px";
+                        }
+                    }
 
                     ballSpeedY = -ballSpeedY;
 
@@ -171,7 +189,7 @@ if(start === "1")
             divBall.style.top = (ballTop + ballSpeedY) + 'px';
 
             detectCollision();
-
+            gameInterval = requestAnimationFrame(gameLoop);
         }
 
         /**
@@ -191,5 +209,7 @@ if(start === "1")
             divTries.innerHTML = "Try : <strong>" + tries + " / " + maxRetries + "</strong>";
             gameLoop();
         }
+
+        startGame();
     }, 4500);
 }

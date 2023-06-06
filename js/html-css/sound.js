@@ -18,6 +18,7 @@ const audioHTMLCountDown = document.createElement('audio');
 audioHTMLCountDown.id = "soundCountDown";
 audioHTMLCountDown.src = "sound/CountDown.mp4";
 audioHTMLCountDown.type = "audio/mp4";
+audioHTMLCountDown.muted = "muted";
 
 document.body.appendChild(audioHTMLCountDown);
 
@@ -29,6 +30,7 @@ const audioHTMLLoose = document.createElement('audio');
 audioHTMLLoose.id = "soundLoosing";
 audioHTMLLoose.src = "sound/Loose.mp4";
 audioHTMLLoose.type = "audio/mp4";
+audioHTMLLoose.muted = "muted";
 
 /**
  * @type {HTMLAudioElement} audioHTMLWinning - Played when player win the game
@@ -38,6 +40,7 @@ const audioHTMLWinning = document.createElement('audio');
 audioHTMLWinning.id = "soundWinning";
 audioHTMLWinning.src = "sound/Win.aac";
 audioHTMLWinning.type = "audio/aac";
+audioHTMLWinning.muted = "muted";
 
 document.body.appendChild(audioHTMLWinning);
 
@@ -49,6 +52,7 @@ const audioHTMLBrick = document.createElement('audio');
 audioHTMLBrick.id = "soundBrick";
 audioHTMLBrick.src = "sound/BreakBrick.aac";
 audioHTMLBrick.type = "audio/aac";
+audioHTMLBrick.muted = "muted";
 
 document.body.appendChild(audioHTMLBrick);
 
@@ -60,6 +64,7 @@ const audioHTMLBounce = document.createElement('audio');
 audioHTMLBounce.id = "soundBounce";
 audioHTMLBounce.src = "sound/Bounce.aac";
 audioHTMLBounce.type = "audio/aac";
+audioHTMLBounce.muted = "muted";
 
 document.body.appendChild(audioHTMLBounce);
 
@@ -71,6 +76,7 @@ const audioHTMLRetry = document.createElement('audio');
 audioHTMLRetry.id = "soundRetry";
 audioHTMLRetry.src = "sound/Retry.aac";
 audioHTMLRetry.type = "audio/aac";
+audioHTMLRetry.muted = "muted";
 
 document.body.appendChild(audioHTMLRetry);
 
@@ -82,6 +88,7 @@ const audioHTMLBrickSpaceInvader = document.createElement('audio');
 audioHTMLBrickSpaceInvader.id = "soundBrick";
 audioHTMLBrickSpaceInvader.src = "sound/space/invaderKilled.wav";
 audioHTMLBrickSpaceInvader.type = "audio/wav";
+audioHTMLBrickSpaceInvader.muted = "muted";
 
 document.body.appendChild(audioHTMLBrickSpaceInvader);
 
@@ -93,6 +100,7 @@ const audioHTMLBounceSpaceInvader = document.createElement('audio');
 audioHTMLBounceSpaceInvader.id = "soundBounce";
 audioHTMLBounceSpaceInvader.src = "sound/space/shoot.wav";
 audioHTMLBounceSpaceInvader.type = "audio/wav";
+audioHTMLBounceSpaceInvader.muted = "muted";
 
 document.body.appendChild(audioHTMLBounceSpaceInvader);
 
@@ -104,5 +112,6 @@ const audioHTMLRetrySpaceInvader = document.createElement('audio');
 audioHTMLRetrySpaceInvader.id = "soundRetry";
 audioHTMLRetrySpaceInvader.src = "sound/space/explosion.wav";
 audioHTMLRetrySpaceInvader.type = "audio/wav";
+audioHTMLRetrySpaceInvader.muted = "muted";
 
 document.body.appendChild(audioHTMLRetrySpaceInvader);
